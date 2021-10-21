@@ -1,0 +1,71 @@
+#glob {
+  height: 250px;
+}
+#search {
+  background-color: blanchedalmond;
+}
+#root
+  > div
+  > div:nth-child(2)
+  > div
+  > div:nth-child(2)
+  > div
+  > div:nth-child(n)
+  > div
+  > div {
+  background-color: rgb(218, 218, 226);
+  height: 250px;
+  margin-bottom: 15px;
+}
+#root
+  > div
+  > div:nth-child(2)
+  > div.col-md-9
+  > div:nth-child(3)
+  > div
+  > div:nth-child(n)
+  > div
+  > div {
+  background-color: rgb(218, 218, 226);
+  height: 230px;
+  margin-bottom: 15px;
+}
+
+#root
+  > div
+  > div:nth-child(n)
+  > div.col-md-9
+  > div:nth-child(n)
+  > div
+  > div:nth-child(n)
+  > div
+  > div
+  > a:nth-child(n)
+  > button {
+  border-radius: 25px;
+  height: 30px;
+  font-size: 12px;
+}
+#favs {
+  border-radius: 25px;
+  height: 30px;
+  font-size: 12px;
+}
+#root
+  > div
+  > div:nth-child(2)
+  > div.col-md-9
+  > div:nth-child(n)
+  > div
+  > div:nth-child(n)
+  > div
+  > div
+  > button {
+  border-radius: 25px;
+  height: 30px;
+  font-size: 12px;
+}
+
+#singleCom {
+  background-color: gray;
+}
