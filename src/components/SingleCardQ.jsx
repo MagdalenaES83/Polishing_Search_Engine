@@ -14,8 +14,8 @@ export default function SingleCardQ ({ data})  {
     <Card.Text>
     Location: {data.candidate_required_location}
     </Card.Text>
-    <Button variant="success">Add to Fav</Button>{' '}
-    <Link to={`/${data.company_name}`}>
+    
+    <Link to={{ pathname: data.url}} target ='_blank'>
     
     <Button variant="primary">Details</Button></Link>  
    

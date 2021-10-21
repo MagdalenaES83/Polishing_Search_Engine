@@ -1,12 +1,35 @@
-import { Col, Form, Row, Container, Card, Button } from "react-bootstrap";
+import { Col,  Row, Container, Card, Button } from "react-bootstrap";
 import { Component } from "react";
-import SingleCompany from "./SingleCompany.jsx"
 import { Link } from "react-router-dom"
+import { addToCartAction, removeItemFromFavList } from '../actions/index.js'
+import { connect } from 'react-redux'
+import React from 'react'
 
 
 
+ const mapStateToProps = state => (state)
+ const mapDispatchToProps = (dispatch) => ({
+    addToFav: (company) => dispatch(addToCartAction(company)),
+     removeItem: (company) => dispatch(removeItemFromFavList(company))
+ })
 
-export default function SingleSingle ({ data})  {
+
+class SingleSingle extends Component   {
+
+  state = {
+    company: null,
+  };
+
+
+componentDidUpdate(prevProps) {
+  if (prevProps.companySelected !== this.props.companySelected) {
+    this.setState({
+      company: this.props.companySelected,
+    });
+  }
+}
+
+render(){ 
 return( 
 <Container id="singleCom">
           <Row>
@@ -16,17 +39,17 @@ return(
                   <Card.Title>
 
                  <h3> Company:
-                     {data.company_name} </h3>
+                     {this.props.data.company_name} </h3>
                    
                   </Card.Title>
                   <Card.Subtitle className="mb-2 text-muted">
-                   <h4>Position: {data.title}  </h4>  
+                   <h4>Position: {this.props.data.title}  </h4>  
                   </Card.Subtitle>
                   <Card.Subtitle className="mb-2 text-muted">
-                   <h4>Location: {data.candidate_required_location}  </h4>  
+                   <h4>Location: {this.props.data.candidate_required_location}  </h4>  
                   </Card.Subtitle>
                   <Card.Subtitle className="mb-2 text-muted">
-                   <h4>Category: {data.category}  </h4>  
+                   <h4>Category: {this.props.data.category}  </h4>  
                   </Card.Subtitle>
                 </Card.Body>
               </Card>
@@ -35,16 +58,22 @@ return(
           <Card className="card2">
             <Card.Body>
               <Card.Title>
-                Details:{data.description} 
+                Details:{this.props.data.description} 
                
               </Card.Title>
               <Card.Subtitle className="mb-2 text-muted">text</Card.Subtitle>
               <Card.Text>Location: </Card.Text>
 
-               <Link to={`/${data.url}`}>
+               <Link to={{ pathname: this.props.data.url}} target ='_blank'>
                 <Button variant="success">Company page </Button>
               </Link>
+              <Button className= "m-5" variant="warning"
               
+               onClick= {() => this.props.addToFav(this.state.company)}
+              >Click to add fav list </Button>
             </Card.Body>
           </Card>
         </Container>)}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SingleSingle)

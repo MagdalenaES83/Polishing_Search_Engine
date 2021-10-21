@@ -2,6 +2,7 @@ import { Navbar, Nav, Container, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { Component } from "react";           
 import {  GiWorld} from "react-icons/gi"
+import Listindicator from "./Listindicator";
 
 
 
@@ -33,6 +34,7 @@ class Navbar1 extends Component {
             </Nav>
           </Navbar.Collapse>
         </Container>
+      <Listindicator /> 
       </Navbar>
     );
   }
